@@ -32,14 +32,16 @@ public final class PointType extends ComplexDataType<Point2D> {
 
   @Override
   public Function<Map<String, Object>, Point2D> fromMap() {
-    return map -> new Point2D(
-        Maps.getOrDefault(map, "x", 0),
-        Maps.getOrDefault(map, "y", 0)
-    );
+    return map -> 
+            new Point2D(
+                (boolean) Maps.getOrDefault(map, "hasRed", false),
+                (boolean) Maps.getOrDefault(map, "hasBlue", false), 
+                (boolean) Maps.getOrDefault(map, "hasBall", false)
+            );
   }
 
   @Override
   public Point2D getDefaultValue() {
-    return new Point2D(0, 0);
+    return new Point2D(false, false, false);
   }
 }

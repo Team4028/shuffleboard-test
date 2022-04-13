@@ -1,6 +1,8 @@
 package com.example.simplewidget.data;
 
 import edu.wpi.first.shuffleboard.api.data.ComplexData;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 import java.util.Map;
 
@@ -8,43 +10,61 @@ import java.util.Map;
  * Represents a single point in two-dimensional space.
  */
 public final class Point2D extends ComplexData<Point2D> {
+    private final boolean hasRed;
+    private final boolean hasBlue;
+    private final boolean hasBall;
 
-  private final double x;
-  private final double y;
+    // Constructor should take all the different fields needed and assign them their
+    // corresponding instance variables.
+    public Point2D(boolean hasRed, boolean hasBlue, boolean hasBall) {
+        this.hasRed = hasRed;
+        this.hasBlue = hasBlue;
+        this.hasBall = hasBall;
+    }
 
-  /**
-   * Creates a new 2D point object.
-   *
-   * @param x the X-coordinate of the point
-   * @param y the Y-coordinate of the point
-   */
-  public Point2D(double x, double y) {
-    this.x = x;
-    this.y = y;
-  }
+    public Point2D setRed(boolean has) {
+        return new Point2D(has, hasBlue, hasBall);
+    }
 
-  /**
-   * Gets the X-coordinate of this point.
-   */
-  public double getX() {
-    return x;
-  }
+    public Point2D setBlue(boolean has) {
+        return new Point2D(hasRed, has, hasBall);
+    }
 
-  /**
-   * Gets the Y-coordinate of this point.
-   */
-  public double getY() {
-    return y;
-  }
+    public Point2D setBall(boolean has) {
+        return new Point2D(hasRed, hasBlue, has);
+    }
 
-  @Override
-  public String toHumanReadableString() {
-    // Generates a string formatted like: (x, y) for data recordings converted to a human-readable format
-    return "(" + x + ", " + y + ")";
-  }
+    public boolean getRed() {
+        return hasRed;
+    }
 
-  @Override
-  public Map<String, Object> asMap() {
-    return Map.of("x", x, "y", y);
-  }
+    public boolean getBlue() {
+        return hasBlue;
+    }
+
+    public boolean getBall() {
+        return hasBall;
+    }
+
+    public Paint getColor() {
+        if (hasRed) {
+            return Color.RED;
+        } else if (hasBlue) {
+            return Color.BLUE;
+        } else if (hasBall) {
+            return Color.WHITE;
+        } else {
+            return Color.BLACK;
+        }
+    }
+
+    @Override
+    public String toHumanReadableString() {
+        return getColor().toString();
+    }
+
+    @Override
+    public Map<String, Object> asMap() {
+        return Map.of("hasRed", hasRed, "hasBlue", hasBlue, "hasBall", hasBall);
+    }
 }

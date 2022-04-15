@@ -9,29 +9,29 @@ import java.util.Map;
 /**
  * Represents a single point in two-dimensional space.
  */
-public final class Point2D extends ComplexData<Point2D> {
+public final class BallStatus extends ComplexData<BallStatus> {
     private final boolean hasRed;
     private final boolean hasBlue;
     private final boolean hasBall;
 
     // Constructor should take all the different fields needed and assign them their
     // corresponding instance variables.
-    public Point2D(boolean hasRed, boolean hasBlue, boolean hasBall) {
+    public BallStatus(boolean hasRed, boolean hasBlue, boolean hasBall) {
         this.hasRed = hasRed;
         this.hasBlue = hasBlue;
         this.hasBall = hasBall;
     }
 
-    public Point2D setRed(boolean has) {
-        return new Point2D(has, hasBlue, hasBall);
+    public BallStatus setRed(boolean has) {
+        return new BallStatus(has, hasBlue, hasBall);
     }
 
-    public Point2D setBlue(boolean has) {
-        return new Point2D(hasRed, has, hasBall);
+    public BallStatus setBlue(boolean has) {
+        return new BallStatus(hasRed, has, hasBall);
     }
 
-    public Point2D setBall(boolean has) {
-        return new Point2D(hasRed, hasBlue, has);
+    public BallStatus setBall(boolean has) {
+        return new BallStatus(hasRed, hasBlue, has);
     }
 
     public boolean getRed() {

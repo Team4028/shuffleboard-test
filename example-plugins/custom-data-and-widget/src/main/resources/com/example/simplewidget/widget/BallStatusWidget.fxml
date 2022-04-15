@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.simplewidget.widget.SimplePointWidget"
+      fx:controller="com.example.simplewidget.widget.BallStatusWidget"
       fx:id="root"
       spacing="4">
     <padding>

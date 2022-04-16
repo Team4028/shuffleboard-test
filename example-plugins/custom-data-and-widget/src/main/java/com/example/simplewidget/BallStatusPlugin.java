@@ -7,7 +7,9 @@ import edu.wpi.first.shuffleboard.api.widget.ComponentType;
 import edu.wpi.first.shuffleboard.api.widget.WidgetType;
 
 import com.example.simplewidget.data.type.BallStatusType;
+import com.example.simplewidget.data.type.ShooterIndexType;
 import com.example.simplewidget.widget.BallStatusWidget;
+import com.example.simplewidget.widget.ShooterIndexWidget;
 
 import java.util.List;
 import java.util.Map;
@@ -26,21 +28,24 @@ public final class BallStatusPlugin extends Plugin {
   @Override
   public List<DataType> getDataTypes() {
     return List.of(
-        BallStatusType.Instance
+        BallStatusType.Instance,
+        ShooterIndexType.Instance
     );
   }
 
   @Override
   public List<ComponentType> getComponents() {
     return List.of(
-        WidgetType.forAnnotatedWidget(BallStatusWidget.class)
+        WidgetType.forAnnotatedWidget(BallStatusWidget.class),
+        WidgetType.forAnnotatedWidget(ShooterIndexWidget.class)
     );
   }
 
   @Override
   public Map<DataType, ComponentType> getDefaultComponents() {
     return Map.of(
-        BallStatusType.Instance, WidgetType.forAnnotatedWidget(BallStatusWidget.class)
+        BallStatusType.Instance, WidgetType.forAnnotatedWidget(BallStatusWidget.class),
+        ShooterIndexType.Instance, WidgetType.forAnnotatedWidget(ShooterIndexWidget.class)
     );
   }
 }
